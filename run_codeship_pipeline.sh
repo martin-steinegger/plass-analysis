@@ -32,7 +32,8 @@ plass assemble ./plass-analysis/data/allgenomes_reads_sample_1.fastq ./plass-ana
 mmseqs createdb results/final.contigs.aa.fa results/final.contigs.aa
 chmod -R u+x ./plass-analysis/
 
-
+mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins.fasta ./plass-analysis/data/prochloroccus_allproteins
+mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins_nr.fasta ./plass-analysis/data/prochloroccus_allproteins_nr
 evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_allproteins ./plass-analysis/data/prochloroccus_allproteins_nr results/ 100 > report-${CI_COMMIT_ID}
 cat results/sense >> report-${CI_COMMIT_ID}
 cat results/precision >> report-${CI_COMMIT_ID}
