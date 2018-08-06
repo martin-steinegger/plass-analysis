@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 BASE_DIR="$HOME/clone/regression_test"
-PLASS="$HOME/clone/build/src/plass"
-
+PLASS="$HOME/clone/build/src/"
+export PATH=$PLASS:$PATH
 notExists() {
 	[ ! -f "$1" ]
 }
