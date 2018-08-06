@@ -2,21 +2,30 @@
 BASE_DIR="$HOME/clone/regression_test"
 PLASS="$HOME/clone/build/src/plass"
 
+notExists() {
+	[ ! -f "$1" ]
+}
+
+
 cd ${BASE_DIR}
 # build the benchmark tools
-git clone https://github.com/martin-steinegger/plass-analysis.git
-cd plass-analysis
-git submodule init
-git submodule update
-cd ..
+if notExists "plass-analysis"; then
+  git clone https://github.com/martin-steinegger/plass-analysis.git
+  cd plass-analysis
+  git submodule init
+  git submodule update
+  cd ..
+fi  
 # setup mmseqs2
-git clone https://github.com/soedinglab/mmseqs2.git
-cd mmseqs2
-mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=Release  ..
-make -j 4 VERBOSE=0
-cd ..
-cd ..
+if notExists "mmseqs2"; then
+  git clone https://github.com/soedinglab/mmseqs2.git
+  cd mmseqs2
+  mkdir build && cd build
+  cmake -DCMAKE_BUILD_TYPE=Release  ..
+  make -j 4 VERBOSE=0
+  cd ..
+  cd ..
+fi
 MMSEQSPATH="$(realpath mmseqs2)/build/src"
 export PATH=$MMSEQSPATH:$PATH
 
