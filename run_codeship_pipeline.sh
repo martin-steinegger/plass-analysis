@@ -43,12 +43,15 @@ chmod -R u+x ./plass-analysis/
 
 mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins.fasta ./plass-analysis/data/prochloroccus_allproteins
 mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins_nr.fasta ./plass-analysis/data/prochloroccus_allproteins_nr
-evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_allproteins ./plass-analysis/data/prochloroccus_allproteins_nr results/ 100 > report-${CI_COMMIT_ID}
-cat results/sense >> report-${CI_COMMIT_ID}
+evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_allproteins ./plass-analysis/data/prochloroccus_allproteins_nr results/ 100 > log-${CI_COMMIT_ID}
+
+cat results/sense > report-${CI_COMMIT_ID}
 cat results/precision >> report-${CI_COMMIT_ID}
 
 # fill out the report and fail
+cat log-${CI_COMMIT_ID}
 cat report-${CI_COMMIT_ID}
-#curl -F upfile=@report-${CI_COMMIT_ID} https://mmseqs.com/regression.php?secret=${REGRESSIONSECRET}
+./check_results.sh report-${CI_COMMIT_ID} "0.491 0.469 0.447 0.419 0.387 0.343 0.298 0.251 0.202 0.141 0.977 0.976 0.976 0.976 0.975 0.973 0.967 0.947 0.886 0.679"
+
 exit $?
 
