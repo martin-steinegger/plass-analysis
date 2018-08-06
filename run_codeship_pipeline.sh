@@ -51,3 +51,4 @@ cat results/precision >> report-${CI_COMMIT_ID}
 cat report-${CI_COMMIT_ID}
 #curl -F upfile=@report-${CI_COMMIT_ID} https://mmseqs.com/regression.php?secret=${REGRESSIONSECRET}
 exit $?
+
