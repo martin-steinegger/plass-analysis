@@ -14,7 +14,7 @@ mmseqs search ${ASSEMBLY}.${LEN} ${REFERENCE} ${RESULT}/assembly_against_referen
 for i in $(seq 90 99| awk '{print $1/100}'); do
   mmseqs filterdb     ${RESULT}/assembly_against_reference ${RESULT}/assembly_against_reference_${i} --filter-column 3 --comparison-value ${i} --comparison-operator ge
   mmseqs createtsv    ${ASSEMBLY}.${LEN} ${REFERENCE} ${RESULT}/assembly_against_reference_${i} ${RESULT}/assembly_against_reference_${i}.tsv
-  ./mappedFraction.sh ${ASSEMBLY}.${LEN}.index ${RESULT}/assembly_against_reference_${i}.tsv $LEN >> ${RESULT}/precision
+  mappedFraction.sh ${ASSEMBLY}.${LEN}.index ${RESULT}/assembly_against_reference_${i}.tsv $LEN >> ${RESULT}/precision
 done
 cat $RESULT/precision
 
@@ -24,6 +24,6 @@ mmseqs search $REFERENCENR ${ASSEMBLY}.${LEN} ${RESULT}/reference_against_assemb
 for i in $(seq 90 99| awk '{print $1/100}'); do
   mmseqs filterdb     ${RESULT}/reference_against_assembly ${RESULT}/reference_against_assembly_${i} --filter-column 3 --comparison-value $i --comparison-operator ge
   mmseqs createtsv    $REFERENCENR ${ASSEMBLY}.${LEN} ${RESULT}/reference_against_assembly_${i} ${RESULT}/reference_against_assembly_${i}.tsv
-  ./mappedFraction.sh ${REFERENCENR}.index ${RESULT}/reference_against_assembly_${i}.tsv $LEN >> ${RESULT}/sense
+  mappedFraction.sh ${REFERENCENR}.index ${RESULT}/reference_against_assembly_${i}.tsv $LEN >> ${RESULT}/sense
 done
 
