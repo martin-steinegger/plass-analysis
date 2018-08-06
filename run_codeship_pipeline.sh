@@ -17,7 +17,7 @@ cmake -DCMAKE_BUILD_TYPE=Release  ..
 make -j 4 VERBOSE=0
 cd ..
 cd ..
-MMSEQSPATH="$(realpath mmseqs2)/mmseqs2/build/src"
+MMSEQSPATH="$(realpath mmseqs2)/build/src"
 export PATH=$MMSEQSPATH:$PATH
 
 #setup benchmark database
