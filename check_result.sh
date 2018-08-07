@@ -5,7 +5,7 @@ if [[ ! -s "${REPORT}" ]]; then
     exit 1
 fi
 
-GOOD=$(awk -v check="$VALS" 'BEGIN{split(check,checklist," ")}{if($3 == checklist[NR]){cnt=cnt+1}}END{if(cnt==NR){print "GOOD"}else{print "BAD"}}' "${REPORT}") 
+GOOD=$( awk -v check="$VALS" 'BEGIN{split(check,checklist," "); cnt=0}{if($3 >= (checklist[NR]-0.005)){cnt=cnt+1}}END{if(cnt==NR){print "GOOD"}else{print "BAD"}}' "${REPORT}")
 ERROR=0
 if [[ "$GOOD" != "GOOD" ]]; then
     ERROR=$((ERROR+1))
