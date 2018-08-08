@@ -3,7 +3,7 @@
 #BSUB -o out.%I.%J
 #BSUB -e err.%I.%J
 
-id=$(sed "${LSB_JOBINDEX}q;d" soillist_src)
+id=$(sed "${LSB_JOBINDEX}q;d" SRC_sample_ids.txt)
 mkdir -p $id
 cd $id
 if [  ! -f ${id}_aa ]
