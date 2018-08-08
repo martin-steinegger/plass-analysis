@@ -20,9 +20,6 @@ done
 cd ..
 prodigal -i genomes/allgenomes.fasta  -a genomes/allproteins.fasta -o /dev/null
 bbmap/randomreads.sh paired snprate=0.005 adderrors coverage=1 len=150 mininsert=150 maxinsert=350 gaussian=true ref=$BASE/genomes/allgenomes.fasta out1=$BASE/allgenomes_reads_1.fastq out2=$BASE/allgenomes_reads_2.fastq
-flash $BASE/allgenomes_reads_1.fastq $BASE/allgenomes_reads_2.fastq
-cat out.extendedFrags.fastq out.notCombined_1.fastq out.notCombined_2.fastq > all_merged_reads_nucl.fastq
-sed -n '1~4s/^@/>/p;2~4p' all_merged_reads_nucl.fastq > all_merged_reads_nucl.fasta
 mmseqs linclust allproteins_nr allproteins_nr_clu tmp --min-seq-id 0.95 -c 0.99 --cov-mode 1 
 mmseqs createsubdb allproteins_nr_clu allproteins_nr allproteins_nr_tc99_id95
 mmseqs createsubdb allproteins_nr_clu allproteins_nr_h allproteins_nr_tc99_id95_h
