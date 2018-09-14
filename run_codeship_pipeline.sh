@@ -48,7 +48,7 @@ evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_
 
 cat results/sense > report-${CI_COMMIT_ID}
 cat results/precision >> report-${CI_COMMIT_ID}
-
+cat report-${CI_COMMIT_ID}
 # fill out the report and fail
 check_result.sh report-${CI_COMMIT_ID} "0.491 0.469 0.447 0.419 0.387 0.343 0.298 0.251 0.202 0.141 0.977 0.976 0.976 0.976 0.975 0.973 0.967 0.947 0.886 0.679"
 
