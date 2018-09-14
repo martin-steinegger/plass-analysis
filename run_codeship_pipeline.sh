@@ -44,7 +44,7 @@ export PATH="$(realpath plass-analysis)":$PATH
 # eval it
 mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins.fasta ./plass-analysis/data/prochloroccus_allproteins
 mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins_nr.fasta ./plass-analysis/data/prochloroccus_allproteins_nr
-evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_allproteins ./plass-analysis/data/prochloroccus_allproteins_nr results/ 100 > log-${CI_COMMIT_ID}
+evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_allproteins ./plass-analysis/data/prochloroccus_allproteins_nr results/ 100 
 
 cat results/sense > report-${CI_COMMIT_ID}
 cat results/precision >> report-${CI_COMMIT_ID}
