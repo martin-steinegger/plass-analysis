@@ -44,15 +44,12 @@ export PATH="$(realpath plass-analysis)":$PATH
 # eval it
 mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins.fasta ./plass-analysis/data/prochloroccus_allproteins
 mmseqs createdb ./plass-analysis/data/prochloroccus_allproteins_nr.fasta ./plass-analysis/data/prochloroccus_allproteins_nr
-evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_allproteins ./plass-analysis/data/prochloroccus_allproteins_nr results/ 100 > log-${CI_COMMIT_ID}
+evaluateResults.sh results/final.contigs.aa ./plass-analysis/data/prochloroccus_allproteins ./plass-analysis/data/prochloroccus_allproteins_nr results/ 100 
 
 cat results/sense > report-${CI_COMMIT_ID}
 cat results/precision >> report-${CI_COMMIT_ID}
-
-# fill out the report and fail
-cat log-${CI_COMMIT_ID}
 cat report-${CI_COMMIT_ID}
-check_result.sh report-${CI_COMMIT_ID} "0.491 0.469 0.447 0.419 0.387 0.343 0.298 0.251 0.202 0.141 0.977 0.976 0.976 0.976 0.975 0.973 0.967 0.947 0.886 0.679"
-
+# fill out the report and fail
+check_result.sh report-${CI_COMMIT_ID} "0.495 0.475 0.451 0.422 0.389 0.344 0.296 0.245 0.197 0.135 0.979 0.978 0.978 0.978 0.976 0.974 0.965 0.940 0.872 0.663"
 exit $?
 
