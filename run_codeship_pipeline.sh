@@ -50,6 +50,6 @@ cat results/sense > report-${CI_COMMIT_ID}
 cat results/precision >> report-${CI_COMMIT_ID}
 cat report-${CI_COMMIT_ID}
 # fill out the report and fail
-check_result.sh report-${CI_COMMIT_ID} "0.497 0.475 0.453 0.424 0.390 0.346 0.298 0.247 0.198 0.134 0.980 0.980 0.980 0.979 0.978 0.975 0.967 0.942 0.873 0.653"
+check_result.sh report-${CI_COMMIT_ID} "0.495 0.474 0.451 0.422 0.389 0.343 0.295 0.245 0.196 0.133 0.980 0.980 0.979 0.979 0.977 0.974 0.965 0.940 0.864 0.649"
 exit $?
 
