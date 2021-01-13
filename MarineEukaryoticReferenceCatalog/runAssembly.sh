@@ -12,7 +12,7 @@ then
     wget https://sra-download.ncbi.nlm.nih.gov/srapub/${id}
     fastq-dump --split-files -split-3 ./$id
   fi
-  mmseqs assemble ${id}_1.fastq ${id}_2.fastq ${id}_assembly.fas  /tmp/tmp_${id}
+  plass assemble ${id}_1.fastq ${id}_2.fastq ${id}_assembly.fas  /tmp/tmp_${id}
   rm -rf /tmp/tmp_${id}
   # clean up
 fi
